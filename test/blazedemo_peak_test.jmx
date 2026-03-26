@@ -1,0 +1,320 @@
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BlazeDemo Performance Test" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        <stringProp name="HTTPSampler.image_parser">true</stringProp>
+        <stringProp name="HTTPSampler.auto_redirects">true</stringProp>
+        <stringProp name="HTTPSampler.follow_redirects">true</stringProp>
+        <stringProp name="HTTPSampler.use_keepalive">true</stringProp>
+        <stringProp name="HTTPSampler.DO_MULTIPART_POST">false</stringProp>
+        <stringProp name="HTTPSampler.BROWSER_COMPATIBILITY_MODE">true</stringProp>
+        <stringProp name="TestPlan.comments">Default settings for HTTP requests</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="BlazeDemo Users" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <longProp name="ThreadGroup.start_time">1678886400000</longProp>
+        <longProp name="ThreadGroup.end_time">1678886400000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">120</stringProp>
+        
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.delayedStart">false</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01_GET_HomePage" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_দোষ">false</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - fromPort" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">fromPort</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">select[name='fromPort'] option:checked</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is  _regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - toPort" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">toPort</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">select[name='toPort'] option:checked</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02_POST_FindFlights" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="fromPort" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${fromPort}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">fromPort</stringProp>
+                </elementProp>
+                <elementProp name="toPort" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${toPort}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">toPort</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/reserve.php</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_দোষ">false</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - flight" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">flight</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">input[name='flight']</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - price" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">price</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">input[name='price']</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - airline" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">airline</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">input[name='airline']</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - _token" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">_token</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">input[name='_token']</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+            <CssSelectorExtractor guiclass="CssSelectorExtractorGui" testclass="CssSelectorExtractor" testname="CSS Extractor - _token" enabled="true">
+              <stringProp name="CssSelectorExtractor.refname">_token</stringProp>
+              <stringProp name="CssSelectorExtractor.selector">input[name=\'_token\']</stringProp>
+              <stringProp name="CssSelectorExtractor.default">NOT_FOUND</stringProp>
+              <boolProp name="CssSelectorExtractor.is_regex">false</boolProp>
+              <stringProp name="CssSelectorExtractor.match_number">1</stringProp>
+              <stringProp name="CssSelectorExtractor.attribute">value</stringProp>
+            </CssSelectorExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03_POST_PurchaseFlight" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="flight" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${flight}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">flight</stringProp>
+                </elementProp>
+                <elementProp name="price" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${price}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">price</stringProp>
+                </elementProp>
+                <elementProp name="airline" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${airline}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">airline</stringProp>
+                </elementProp>
+                <elementProp name="name" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">QA Sênior</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">name</stringProp>
+                </elementProp>
+                <elementProp name="address" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Rua Teste, 123</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">address</stringProp>
+                </elementProp>
+                <elementProp name="city" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Cidade Teste</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">city</stringProp>
+                </elementProp>
+                <elementProp name="state" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Estado Teste</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">state</stringProp>
+                </elementProp>
+                <elementProp name="zipCode" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">12345</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">zipCode</stringProp>
+                </elementProp>
+                <elementProp name="cardType" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">visa</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">cardType</stringProp>
+                </elementProp>
+                <elementProp name="creditCardNumber" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">1111222233334444</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">creditCardNumber</stringProp>
+                </elementProp>
+                <elementProp name="creditCardMonth" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">12</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">creditCardMonth</stringProp>
+                </elementProp>
+                <elementProp name="creditCardYear" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">2026</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">creditCardYear</stringProp>
+                </elementProp>
+                <elementProp name="nameOnCard" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">QA Sênior</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">nameOnCard</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/purchase.php</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_দোষ">false</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion - Purchase Success" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">Thank you for your purchase!</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04_POST_Confirmation" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/confirmation.php</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_দোষ">false</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+          <doubleProp name="throughput">15000.0</doubleProp>
+          <intProp name="calcMode">1</intProp>
+        </ConstantThroughputTimer>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

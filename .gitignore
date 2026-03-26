@@ -1,0 +1,5 @@
+# Ignorar resultados de testes e logs locais
+*.jtl
+*.log
+report/load_test_report/
+report/peak_test_report/
